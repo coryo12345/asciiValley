@@ -1,2 +1,0 @@
-# asciiValley
-ascii battleground

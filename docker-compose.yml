@@ -1,0 +1,27 @@
+version: "3.5"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: dockerfile
+    container_name: "frontend"
+    restart: "no"
+    ports:
+      - "3300:3000"
+    volumes:
+      - ./frontend:/usr/src/app
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: dockerfile
+    container_name: "backend"
+    restart: "no"
+    #env_file: .env # At somepoint we should put passwords and such in a .env file, not in the repo
+    ports:
+      - "3301:3001"
+    volumes:
+      - ./backend:/usr/src/app

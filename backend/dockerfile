@@ -1,0 +1,12 @@
+
+FROM python:3.8
+
+RUN mkdir -p /usr/app/
+
+RUN pip install flask
+
+WORKDIR /usr/app
+
+COPY . .
+
+CMD [ "python", "app.py" ]
