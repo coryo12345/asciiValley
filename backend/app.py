@@ -8,4 +8,4 @@ app = Flask(__name__)
 app.register_blueprint(world_bp, url_prefix='/world')
 
 if __name__ == '__main__':
-    app.run(port=3001)
+    app.run(host="0.0.0.0", port=3001)
