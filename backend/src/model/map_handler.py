@@ -104,9 +104,18 @@ class WorldMap:
                 r.append(self.icons[col.type])
             data['map'].append(r)
         return json.dumps(data)
+    
+    def to_json():
+        data = {
+            'map': []
+        }
+        return json.dumps(data)
 
     def to_icons_json(self):
         return json.dumps(self.icons)
+
+    def to_icons_json():
+        return json.dumps({})
 
     def __str__(self):
         s = ''

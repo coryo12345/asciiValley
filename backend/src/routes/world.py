@@ -1,23 +1,31 @@
 from flask import Blueprint
-import sys
+from .lobby import lobby_manager
 from ..model.map_handler import WorldMap
-
-# setup
-# for now load 1 map
-world = WorldMap('blank_10.map')
-if not world.load_world():
-    sys.exit(1)
 
 world_bp = Blueprint('world_bp', __name__)
 
-
-@world_bp.route('/')
-def get_world():
+@world_bp.route('/get/<code>')
+def get_world(code):
     """
     returns current world status layout
     """
+    lobby = lobby_manager.lobbies.get(code)
+    if lobby == None:
+        return WorldMap.to_json()
+    world = lobby.world
+    if world == None:
+        return WorldMap.to_json()
     return world.to_json()
 
-@world_bp.route('/icons')
-def get_icons():
+@world_bp.route('/icons/<code>')
+def get_icons(code):
+    """
+    returns current world icons
+    """
+    lobby = lobby_manager.lobbies.get(code)
+    if lobby == None:
+        return WorldMap.to_json()
+    world = lobby.world
+    if world == None:
+        return WorldMap.to_json()
     return world.to_icons_json()

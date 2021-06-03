@@ -15,7 +15,7 @@ function WorldDisplay(props) {
         var row = [];
         for (let c = 0; c < props.map[r].length; c++) {
             row.push(
-                <div key={count++} style={{ ...styles.cell, width: cellSize, height: cellSize, fontSize: `${cellSize*.8}px` }}>{props.map[r][c]}</div>
+                <div key={count++} style={{ ...styles.cell, width: cellSize, height: cellSize, fontSize: `${cellSize * .8}px` }}>{props.map[r][c]}</div>
             )
         }
         var fullRow = <div key={count++} style={styles.worldrow}>{row}</div>
@@ -31,7 +31,7 @@ function WorldDisplay(props) {
 
 const styles = {
     worldcontainer: {
-        
+
     },
     worldrow: {
         display: 'flex',
